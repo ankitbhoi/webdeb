@@ -59,7 +59,7 @@ Object Creation-How?
         }
     }
 
-    let storeVariable3=new createRectangle(99,88);
+    let storeVariable3=new CreateRectangle(99,88);
 
 
 Dynamic nature of Objects:-
@@ -71,4 +71,82 @@ Dynamic nature of Objects:-
     delete storeVariable3.color;
 
 Constructor property:-
-    
+    new krke jo function create krte hai usiko constructor bol rha hai 
+
+**Primitive types k andar copy create hota hai PAR Referencetypes k andar actual me changes hote hai copy nahi create hote
+
+example Primitive   
+    let a=10;
+    let b=a;
+
+    a++;
+    console.log(a);         //11
+    console.log(b);         //10
+
+example Reference
+    let a={
+        value:10,
+    };
+    let b=a;
+    a.value++;
+    console.log(a.value);          //11
+    console.log(b.value);          //11
+
+
+FOR-OF Loop
+FOR-IN Loop
+    //loops
+    let square = {
+        length:2,
+        breadth:3
+    };
+
+    //for in loop
+    for(let key in square){
+        //keys are reflected key variable
+        //values are reflected through box braces => square[key]
+        console.log(square[key]);
+    }
+
+    //for of loop=>only used on iterables - Arrays, Strings, Maps, Node Lists....
+    for(let key of square){
+        console.log(key);
+        //will give error bcz iterable hai nahi bhidu
+
+    }
+
+OBJECT CLONING?
+upar jaise kiye agar 
+let a={
+        value:10,
+    };
+    let b=a; 
+ye kia to yeh to bhai Reference to the same memory location bana na? par hamko clone krna hai alag ek banana hai 
+1>iteration way
+    let src={value:10};
+    let dest={};
+    for(let key in src){
+        dest[key]=src[key];
+    }
+
+2>the assign way
+    let dest = Object.assign({},src);
+
+    //double assignment is also possible
+    let src = {
+        a:10,
+        b:11
+    };
+
+    let src2 = {
+        c:12
+    };
+    let dest = Object.assign({},src,src2);          
+
+3>spread operator
+    let dest={...src};
+
+Garbage collection= 
+    c++/c me khudse memory allocate and deallocate krna padta haich hai
+    ayse variables ayse Constants ko find krta hai jo use me nahi hai aur unko de allocate kr deta hai automatically. yehi kaam hai garbage collector ka
+    we have no control over garbage collector
