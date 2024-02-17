@@ -1,0 +1,74 @@
+WHAT IS OBJECT IN JS?
+    An object is a collection of properties, and a property is an association between a name (or key) and a value. A property's value can be a function, in which case the property is known as a method. Objects in JavaScript, just as in many other programming languages, can be compared to objects in real life.
+
+const rectangle = {
+    length:1,
+    breadth:2
+};
+
+let a = {}; => empty object
+
+agar koi function object k andar create karte ho to usko "method" bolte hai.
+
+dot operator ka use krke object k properties ko access kr skte hai 
+    let rectangle = {
+        length:1,
+        breadth:2,
+
+        draw(){
+            console.log('draw');
+        }
+    };
+
+    To access:- rectangle.draw();
+
+js is an object oriented programming language
+
+Object Creation-How?
+    object banane k v jo char lines hai unko bar bar likhna par rha hai!! change krna hua to sab pe individually krna hoga hectic ho jaega. To usko overcome krne k liye yeh do tarika.
+    1)Factory Function
+    2)Constructor Function
+
+1)factory fn dwara object creation
+
+    function createRectangle(l,b){
+        return rectangle = {
+            length:l,
+            breadth:b,
+        
+            draw(){
+                console.log('draw');
+            }
+        };
+    }
+
+    let storeVariable = createRectangle(5,2);
+
+2)Constructor function
+    this ka use krte hai this keyword denote karta hai current object ko jispe work kr rhe hai
+    pascal casing use krte hai = AnkitGhosal
+    new object js k andar aapko ek empty object return krta hai
+    yahan properties/methods ko initialize ya define krne k liye use krte hai
+    yahan return nahi krte kuch
+
+    function CreateRectangle(l,b){
+        this.length=l;
+        this.breadth=b;
+        this.draw = function(){
+            console.log('draw 2');
+        }
+    }
+
+    let storeVariable3=new createRectangle(99,88);
+
+
+Dynamic nature of Objects:-
+    dynamic in nature hhote hai tum naye add kr skte ho! key value pairs object me 
+
+    //add a property
+    storeVariable3.color= "yellow";
+    //delete a property
+    delete storeVariable3.color;
+
+Constructor property:-
+    

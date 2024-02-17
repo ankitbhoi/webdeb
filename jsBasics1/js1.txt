@@ -1,0 +1,109 @@
+javascript ek client side scripting/programming language hai jo ki functionality provide krti hai ksi bhi webpage ko.
+netscape developed within 10 days 
+mocha was named it back then -> livescript -> javascript
+
+What is Client-Side Script, and how does it work?
+    A client-side script is a tiny program (or collection of instructions) that is put into a web page. It is handled by the client browser rather than the web server.
+    The client-side script, along with the HTML web page it is embedded in, is downloaded from the server at the client end. The code is interpreted and executed by the web browser, which then displays the results on the screen.
+    The client refers to the script that runs on the user’s computer system. It can either be integrated (or injected) into the HTML content or stored in a separate file (known as an external script).
+    When the script files are requested, they are transmitted from the web server (or servers) to the client system. The script is run by the client’s web browser, which subsequently displays the web page, including any visible script output.
+
+What can we do with Js?
+    WebAPP,MOBILE APPS,NETWORK APPS,CLI TOOLS,GAMES
+
+Do we need a Compiler?
+    we need a js engine(browser).
+
+With the emergence of node we can run js outside the browser
+
+<script>
+console.log('hello dunia');
+</script>
+
+aap isko head aur body dono jagah add kr skte ho script tag ko
+but best practise kya hai ? to add it in the end of the body part. but why?
+    taki beech me kuch parsing hone waqt(Script) na rukna pade user ko for a prolonged time isiliye end me add crow
+
+String - anything enclosed b/w single quotes.
+
+Kisi v line ko end krne k liye use ;
+
+Seperation of concerns k liye alag js chaiye, outside html par html se link karna hoga babu how will you?
+    <script src="TmhareNayeFileKaNam.js"><script/>
+
+ide pe chalane k liye node install crow phir integrated terminal kholke -> node index.js
+
+difference b/w java and js => https://www.geeksforgeeks.org/difference-between-java-and-javascript/ 
+
+Variable? [a memory location with a name./ named memory location.]
+    How to create => using let keyword (let a=5)
+
+    Dynamically typed => you dont need to mention the datatype apne aap smjhega let hi kafi hai boss.!
+
+    #let a=5     a=identifier 5=value
+
+    But aur ek v tarika hai variable declaration ka => using var keyword (var a=5)
+
+    Tab let and var me difference kya hua?
+        let bas local scope tak hi valid hai and var ka scope global hota hai.
+        var reinitialization se oka hai pr let allow nhi krta is chiz ko!
+
+Constants? [aysi values jo change nahi hoti]
+
+Variable naming conventions
+    cannot use reserved keywords
+    should be a meaningful name
+    cannot start with a number
+    cannot contain space or '-'
+    always use camelCasing
+
+Primitive Types:
+    String,Number,Boolean,Undefined,Null.
+    Undefined aur Null same hai ke?
+        Undefined means a variable has been declared but has yet not been assigned a value. Null is an assignment value. It can be assigned to a variable as a representation of no value.
+
+Reference Types
+    Objects:
+    A JavaScript object is a collection of named values
+    A javaScript object is an entity having state and behavior (properties and method). 
+    It is a common practice to declare objects with the const keyword.
+    Example    const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+    How to access? two wayz => person.age / person['age']
+
+    Arrays:
+    A data structure used to contain a list of items.
+    let names = ['ankit','ghosal','hero];       0 based indexing.
+    names[3] pe Undefined ayega
+    names[3]='dutta' karne pe third location pe dutta add ho jaega array pe
+    names[1]=2      karne pe ghosal replace hokr us position pe rahul aajaenga.
+
+    Functions:Later
+
+Operators
+    Arithmetic= +,-,*,/,%,**
+    Assignment
+    Comparison= >,<,<=,>=,===,!==
+    Equality Operators
+        Loose equality(==) vs Strict equality(===)
+            loose wala sirf values check krega & strict wala values and datatype dono check karega
+    Ternary operator 
+        let status = (age>=18) ? 'vote karega' : 'vote nahi karega'
+    Logical operator
+        AND(&&),OR(||),NOT(!)
+    Bitwise Operator
+        Bitwise AND(&)
+        Bitwise OR(|)
+    
+Operator Precedence
+    let c = a+b*d/c  => (a+((b*d)/c))
+
+something about do-while
+    let y=1;
+    do{
+        console.log(y);
+        y++;
+    }while(y<10);    
+
+    ispe console excute hoga phir while chalega agr satisfy krta hai to phirse do chalega aur false hone pe exit lelega
+
+
