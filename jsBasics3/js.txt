@@ -1,0 +1,255 @@
+string js me do type k hote hai ek to primitive type jo tmne padha
+aur ek hota hai object type jisko ayse banate hai 
+let lastName = new String("anqeet");
+
+lastName ka type hoga object abh => hamne String constructor function ka use kar liya.
+
+escape sequence => special characters can be encoded using escape sequences
+let message = 'this is my \n message';      //gives a new line
+let message2 = 'this is \' is message';     //gives ' in output
+
+Lekin ankit bhai ayse bar bar \n nahi likhna bar bar slash ka use nahi krna kya alternative hai ?
+
+    Template literal => use of backticks
+    Template literals are literals delimited with backtick (`) characters, allowing for multi-line strings, string interpolation with embedded expressions, and special constructs called tagged templates.
+
+    let message3= `yeh tune 
+    kya kia`;                       //as it is output ayega
+
+    console.log(`hello ${lastName}`);       //ayse v placeholder ka use kia jaa skta hai dynamic updation k liye
+
+#Date & Time
+
+let date = new Date();        => current wala =>   Sun Feb 18 2024 09:59:02 GMT+0530 (India Standard Time)
+
+let date2 = new Date('June 20 1998 7:15');      => Sat Jun 20 1998 07:15:00 GMT+0530 (India Standard Time)
+
+let date3 = new Date(1998, 11, 20, 7);           => Sun Dec 20 1998 07:00:00 GMT+0530 (India Standard Time)
+yahan pe second wala parameter month ko denote kr rha hai 0 based indexing
+
+date manipulation k v fns available hai setter and getter
+date3.setFullYear(1947);
+date3.getTime();
+
+
+ARRAYS:-
+The Array object, as with arrays in other programming languages, enables storing a collection of multiple items under a single variable name, and has members for performing common array operations. ALAG ALAG DATATYPE WALE KO SINGLE ME STORE KAR SKTE HO!
+
+ARRAY OPERATIONS:-
+
+INSERTION
+    let nums = [1,2,3,4];
+
+    nums.push(9);       Insertion of new element to the last
+
+    nums.unshift(8);    Insertion of new element to the beginning
+
+    nums.splice(2,0,'lemon','kiwi');       Insertion of new element in between 
+    (index jahan insert krna hai, kitne elements delete krne hai , and kya kya addd krna hai )
+
+    output=> [8, 1, 'lemon', 'kiwi', 2, 3, 4, 9]
+
+SEARCHING
+    console.log(nums.indexOf(9));  agar koi element nahi present rahe to -1 return karega else index return
+
+    console.log(nums.includes(7));  array me wo element hai ki nai  true/false return karega
+
+    console.log(nums.indexOf(4,2));  array ke 2 index se lkr last tak me 4 kahi exist krta hai ki nai=>index return crow
+
+    #above listed methods will only work for primitive types.
+
+
+    Problem:- Array of objects/reference types k upar bhi kaam karega yeh?
+    // array of objects
+    let courses = [
+        {
+            no:1,
+            naam:"ankit"
+        },
+        {
+            no:2,
+            naam:"anqeet"
+        }
+    ];
+
+    console.log(courses.indexOf({no:1,naam:"ankit"}));          =>-1
+    console.log(courses.includes({no:1,naam:"ankit"}));         =>false
+
+    but aysa output kyu arha hai ? kyuki object jo search horha hai and jo upar courses me hai dono ka address alag alag hai iss case me.
+    console wala object and courses wala object alag alag hota hai.
+
+
+    Solution:- using find with CALLBACK FUNCTION
+        A callback function is a function passed into another function as an argument which is then invoked inside the outer function to complete some kind of routine or action.
+        desi bhasa me tandoori chicken banane k liye sabse important hai chicken to maa ne aapse pucha aap chicken laye ho? aapke answer pe depend karega maa chicken banaegi ki nai 
+        to ~gian nahi hai aap~ aap callback function hain!
+
+
+    syntax->  arrayName.find(predicate/callback fn)
+
+    let c=courses.find(function(courses) {
+        return courses.naam == 'ankit';
+    })
+    console.log(courses)
+
+    result-> returns object => {no:1,naam:"ankit"} if available else undefined
+
+    ARROW FUNCTIONS:-
+        function word ko remove krke "=>"
+        agar single input hai to bracket v hata dia () parameter k agal bagal wala
+        agar single line of code hai to curly v hata do return v hata do
+
+        let c2 = courses.find(courses => courses.naam == 'anqeet');
+
+REMOVING ELEMENTS
+
+    let nums1 = [1,2,3,4];
+
+    nums1.pop() //removes the last element
+
+    nums1.shift()  //removes the first element
+
+    nums1.splice(1,1);  //removes from mid (index,no. of elements u wanna del)
+
+
+EMPTYING AN ARRAY
+
+    let nooms = [1,3,4,5,6];
+
+    let nooms2 = nooms;
+
+    nooms = [];                 //ayse krke empty array ko bas tum initialize kr doge aur wo array ko garbage collector smbhal lelega
+                                //but reference type hai kisi aur array pe hoga directed to uska value as it iz rah jaega del nahi hoga
+
+    console.log(nooms2);        //output -> [ 1, 3, 4, 5, 6 ]
+
+    nooms.length=0;             //alternative to above approach!! isse both arrays empty ho jaenge
+
+
+    ##Nooms ko agar tum empty se initialize karoge to wo update ho jaega and kisi aur location k [] ko point karega
+    par Nooms2 abhi v same location jisme sare elements the usi ko point kr rha hai 
+    reference type ka simple mtlb hai same location different name
+
+COMBINING AND SLICING ARRAYS
+
+    let first = [1,2,3];
+    let second = [4,5,6];
+
+    console.log(first.concat(second));      //[ 1, 2, 3, 4, 5, 6 ]
+
+
+    let first = [1,2,3,99,100];
+
+    console.log(first.slice(3,4));              //[ 99 ] => ( starting index se,ending index-1 tak chalta hai)
+
+--*--*--
+
+SPREAD OPERATOR = > simply copy kar leta hai sare pehele wale elements ko
+
+    let first = [1,2,3];
+    let second = [4,5,6];
+
+    let combine = [...first,...second];
+
+
+ITERATING THE ARRAYS USING forEach LOOP
+
+    forEach ko chaiye hota hai input me ek callback fn.
+
+    let first = [1,2,3,99,100];
+
+    first.forEach(function(num){
+        console.log(num);
+    })
+
+    1
+    2
+    3
+    99
+    100
+
+JOINING ARRAYS
+
+    let first1 = [1,2,3,99,100];
+
+    console.log(first1.join(','));          //1,2,3,99,100
+
+
+SPLITTING returns an array
+
+    let lomdike = 'hello lomdike kya hal ?';
+
+    console.log(lomdike.split(' '));            //[ 'hello', 'lomdike', 'kya', 'hal', '?' ]
+
+
+SORTING AN ARRAY    
+    let num = [3,8,4];
+
+    num.sort(num);
+
+    yeh v bas primitives k liye hai agar object pe use krna hai to callback fn ka use krna hoenga
+
+    let maxSpeed = {
+        car: 300, 
+        bike: 60, 
+        motorbike: 200, 
+        airplane: 1000,
+        helicopter: 400, 
+        rocket: 8 * 60 * 60
+    };
+    let sortable = [];
+    for (var vehicle in maxSpeed) {
+        sortable.push([vehicle, maxSpeed[vehicle]]);
+    }
+
+    sortable.sort(function(a, b) {              //callback
+        return a[1] - b[1];
+    });
+
+FILTERING ARRAYS
+
+    filter krne ko v ek callback fn chaiye 
+
+    let numberss = [1,3,-8,-17];
+
+    let filtered = numberss.filter(function(value){
+        return value>=0;
+    });
+
+    console.log(filtered)
+
+
+MAPPING ARRAYS
+    maps each element of array to something else and returns an array
+
+    let ans = numberss.map(function(value){
+        return 'A'+ value;
+    });
+
+    console.log(ans);                               //[ 'A1', 'A3', 'A-8', 'A-17' ]
+
+
+MAPPING WITH OBJECTS
+
+    let arrayy = [1, 3, 4, -7, -8];
+
+    let fil = arrayy.filter(val => val >= 0);
+
+    let mapper = fil.map(num => ({ value: num }));          //implicitly returned using () bcz not returning a single value
+
+    console.log(mapper);                            //[ { value: 1 }, { value: 3 }, { value: 4 } ]
+
+
+    When you use curly braces without an explicit return, the JavaScript interpreter does not treat it as an expression to be returned implicitly. Instead, it is considered a block of code.
+    hence this will give an error
+    let mapper = fil.map(num => { "value" : num });
+    to fix it 
+    let mapper = fil.map(num => ({ "value" : num }));           //returning implicitly
+
+
+you can chain it in single line too like this
+    console.log(
+            arrayy
+            .filter(val => val >= 0)
+            .map(num => ({ "value" : num }))
+            );
