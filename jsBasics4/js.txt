@@ -1,0 +1,211 @@
+What is a function?
+    Functions are one of the fundamental building blocks in JavaScript. A function in JavaScript is similar to a procedure—a set of statements that performs a task or calculates a value, but for a procedure to qualify as a function, it should take some input and return an output where there is some obvious relationship between the input and the output. To use a function, you must define it somewhere in the scope from which you wish to call it
+
+WHY?
+    -reusability
+    -bugg fixation becomes easy
+    -readability
+    -less bulky
+
+syntax
+
+    Way1:-basic wala
+
+        function printCounting(){
+            console.log('counting');
+        }
+
+        printCounting();
+
+Sawal hai ki function call jo kr rhe ho usko agr declaration k upar likhoge tab v chalega? kyuki c++ pe to nahi chalta hai bc!
+Jawab hai yes, c++ nehi hai bhaisaab 
+Hoisting = ispe kaya hota ki js sare fn declaration ko file k top p bhej deta hai and as a result js k pass pehele se ek copy rahta hai signature ka jiske wajah se wo chal leta hai
+
+Way2:- named function assignment
+
+    let stand = function walk(){
+        console.log('walking');
+    };
+
+    stand();
+
+Way2.1 :- anonymous function assignment
+
+    let stand2=function(){
+        console.log('walking');
+    }
+
+    stand();
+
+Way3:- 
+    let jump = stand;
+
+    jump();
+
+(Q*)
+function sum(a,b){
+    return a+b;
+}
+
+console.log(sum(1));
+single value agr bhejoge as BUT UPAR CHAIYE DO to yeh ek NaN output dega mtlb ki NOT A NUMBER bcz 1 ko fn me undefined k sath add krna par rha hai 
+
+(Q*)
+function sum(a,b){
+    return a+b;
+}
+
+console.log(sum());
+same NaN output ayega.
+
+(Q*)
+function sum(a,b){
+    return a+b;
+}
+
+console.log(sum(1,2,3,4,5));
+isme 1 and 2 a,b pe chale jaenge output 3 ayega aur baki barbad ho jaega 3-5 no use, wo special object arguments me chale jaenge wahan stored rahenge
+console.log(arguments) krne pe wo remaining numbers dikh jaenge
+
+
+Rest parameters(...xyz)
+
+    function sum(...args){
+        console.log(args);
+    }
+
+    sum(1,2,3,4,5,6);
+
+    To yeh return krta hai ek array of nums basically yeh args pe sare elements ko dal dega and args tmhara ek array k form me hota/leta hai values ko.
+    The rest parameter syntax allows a function to accept an indefinite number of arguments as an array, providing a way to represent variadic functions in JavaScript.
+
+(Q*)
+    function sum(num,value,...args){
+        console.log(args);
+    }
+
+    sum(1,2,3,4,5,6);    
+    
+    ayse case me num=1,value=2 ho jaega and args me baki sare elements chale jaenge.
+
+(Q*)
+    function sum(...args,num){
+        console.log(args);
+    }
+
+    sum(1,2,3,4,5,6);
+
+    ayse case me error dega bcz args k bad koi value nahi le skte alag se
+    Rest parameter must be last formal parameter.
+
+
+GETTER-SETTER
+
+    GETTER=ACCESS PROPERTIES
+    SETTER=CHANGE OR MUTATE PROPERTIES
+
+    let person = {
+        fName:'ankit',
+        lName:'ghosal',
+        get fullName(){
+            return `${person.fName} ${person.lName}`;
+        },
+        set fullName(value){
+            let parts = value.split(' ');
+            this.fName = value[0];
+            this.lName = value[1];
+        }
+    };
+
+    person.fullName = 'RAHUL BHAI';
+    person.fullName;
+
+
+ERROR HANDLING
+    done using try catch block;
+        syntax:-
+        try{
+            xyzxyz;
+        }
+        catch(e){
+            alert('notty horha...etcetc')
+        }
+
+    example:-
+    let person = {
+        fName:'ankit',
+        lName:'ghosal',
+        get fullName(){
+            return `${person.fName} ${person.lName}`;
+        },
+        set fullName(value){
+            if(typeof value !== String){
+                throw new Error("you have not sent a string")       //syntax dekh iska
+            }
+            let parts = value.split(' ');
+            this.fName = value[0];
+            this.lName = value[1];
+        }
+    };
+
+    try{
+        person.fullName = true;         //yeh ek error dega kyuki udhar string chaiye 
+    }   
+    catch(e){                          //is e me wo error pakraega jo tumne throw kia hai 
+        alert(e);                      //isse display hoga agr nahi throw kia kuch to by default wala dikhta h
+    }
+
+
+VARIABLE SCOPING
+
+    let local scope k liye defined rahta hai { } codeblocks inke andar tak hi
+
+    var global scope k liye defined hota hai i.e., agr function pe hai to pure function k liye accessible rhega else agr outside fn hai to globally. 
+
+    (Q*)
+    function a(){
+        const ab=5;
+    }
+    function b(){
+        const ab=5;
+    }
+
+    koi bhi error nahi dega ab ka scope bas { } tak hi hai 
+
+    (Q*)
+    const a=5;
+    function xyz(){
+        const a=5;
+    }
+
+    yeh v koi error nahi dega { } iske andar hai wo uska scope utna hi hai bhar wale se mtlb nahi hai
+
+
+REDUCING AN ARRAY:-
+
+    The reduce() method executes a reducer function for array element.
+    The reduce() method returns a single value: the function's accumulated result.
+    The reduce() method does not execute the function for empty array elements.
+    The reduce() method does not change the original array.
+
+    syntax:-
+    1)reduce(callbackFn)
+    2)reduce(callbackFn, initialValue)
+
+    example:-
+    let arr=[1,2,3,5];
+    let totalSum = arr.reduce( (accumulator,currentValue) => accumulator+currentValue , 0 );
+
+    explanation:-
+    yahan accumulator = 0 se suru hoga jaisa initialise kia hamne 
+    wo 0 accumulator ka value me jata hai.
+    aur currentValue me array ke ek ek element aate jaenge.
+    aur accumulator hamesha update hota rhega accumulator+currentValue se.
+
+    a different case:-
+    At the first callback, there is no return value from the previous callback.
+    Normally, array element 0 is used as initial value, and the iteration starts from array element 1.
+    If an initial value is supplied, this is used, and the iteration starts from array element 0.
+
+    Agar initial value na diya rahe to accumulator start hoga tmhare first value se joki 1 hai(Acc. to array)
+    aur currentValue start hoga tmhare second value se joki 2 hai (acc. to array)
