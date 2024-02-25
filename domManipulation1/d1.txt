@@ -1,0 +1,110 @@
+WINDOW 
+    ek global object hota hai, kahi par v access kr skte hai 
+    Created by browser
+    represents a browser Window
+    window k andar dom,bom,jscore rahta hai
+    top level entity
+    ek aysa tarika pradan karta hai jisse aap browser window ko manipulate kr skte hai 
+
+DOM(DOCUMENT OBJECT MODEL)
+    pura html code ko ek js object me convert kr die called document object MODEL
+    DOM is a way to represent the webpage in a structured hierarchical way so that it will become easier for programmers and users to glide through the document. Using DOM, the JavaScript gets access to HTML as well as CSS of the web page and can also add behavior to the HTML elements. 
+
+BOM(BROWSER OBJECT MODEL)
+    it allows js to talk to browser about matters other than content of page.
+
+
+MORE ON DOM
+
+TO FETCH AN ELEMENT:-
+    document.getElementById("heading")
+
+        it is called always on Document object
+        hamesha returns a single object
+
+    document.getElementsByClassName("")
+
+        returns HTML Collection (array like structure)
+        basically all objects matching the class name.
+
+    document.getElementsByTagName("p")
+
+        returns HTML Collection
+        p tag jahan jahan hai wo sare objects return honge
+
+
+    keep in mind:-
+        both method use document object
+        both return multiple items
+        the list returned is not an array.
+
+    $0 trick:- open page=>inspect=>select any element => ab wo dollar zero me save ho jata hai selected element now usko use kr skte ho apne trah se 
+
+
+    CSS me jaise "#,.,tag" se tum ek element ko fetch krte the yahan bhi same kr skte ho query selector k use krke
+    Below mentioned teeno first matching object ko hi return karenge. bas single object o/p always
+
+        document.querySelector(".name")             for classes
+        document.querySelector("#name")             for ids
+        document.querySelector("tagName")           for direct tags
+
+    par mujhe agar multiple ko return karna hai to i will use 
+        document.querySelectorAll("")
+
+UPDATE EXISTING CONTENT
+    elementName.innerHTML
+        get an element/all of its descendant HTML content
+        set an element's HTML content
+
+        example:-
+        let codingEx = document.querySelector('.code-example');
+        codingEx.innerHTML                  //get the whole html in code example class
+        codingEx.innerHTML=' '              //SET the whole html to empty space
+
+    elementName.outerHTML
+        The outerHTML property sets or returns the HTML element, including attributes, start tag, and end tag.
+
+        element.outerHTML                       //Return the outerHTML property:
+        element.outerHTML = text                //Set the outerHTML property:
+
+    Below wale dono text return krte hai ya set kr skte hai
+    element.textContent     me hidden wale v dikhenge 
+    element.innerText       me hidden wale content nahi dikhte
+
+
+CREATE ELEMENT THROUGH JS
+    let content = document.querySelector('.paraClass');         //fetch kr liye object ko by class content pe
+    let newPara = document.createElement('p');                  //create kr liye iss command se 
+    content.appendChild(newPara);                               //append kr diye existing html me isse
+
+    issue:- hamesha last me jake add hoga existing jo content tha/tags tha wo rhega and uske bad jakr naya add hoga par hame to kahi v add krne ka freedom chaiye HTML me? wo kaise karein?
+
+    elementName.insertAdjacentHTML() 
+        The insertAdjacentHTML() method of the Element interface parses the specified text as HTML or XML and inserts the resulting nodes into the DOM tree at a specified position.
+
+        insertAdjacentHTML(position, text);
+
+        position Must be one of the following strings:
+
+        "beforebegin"
+        Before the element. Only valid if the element is in the DOM tree and has a parent element.
+
+        "afterbegin"
+        Just inside the element, before its first child.
+
+        "beforeend"
+        Just inside the element, after its last child.
+
+        "afterend"
+        After the element. Only valid if the element is in the DOM tree and has a parent element.
+
+
+REMOVE ELEMENT
+    <div id="div-01">Here is div-01</div>
+    <div id="div-02">Here is div-02</div>
+    <div id="div-03">Here is div-03</div>
+
+    const element = document.getElementById("div-02");
+    element.remove(); // Removes the div with the 'div-02' id
+
+
