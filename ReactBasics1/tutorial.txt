@@ -1,0 +1,4 @@
+React is a js library whose sole purpose is to create UIs.
+
+Library = pre-defined functionalities
+
