@@ -1,0 +1,31 @@
+what is typescript?
+it is a language built in top of javascript to address the shortcomings of js 
+
+now we know that js is a dynamically typed lang. which means ki whenever we are declaring a variable we do it like :- let number = 10;
+later we can update like        number="a";
+
+but issue arises when we need a number in specific as in Math.round(number);    here number should be a int value.
+
+-Typescript is js with type checking
+
+This checking happens at compile time and hence we dont need to individually check every unit of code.
+
+other features are
+code completion
+refactoring
+shorthand notation 
+        which are available usually in the editors we use 
+
+talking about the drawbacks:-
+
+compilation always involved - .ts->ts compiler->.js file bcz browsers dont understand ts. This step is called transpilation
+
+for simple projects -> js
+for med to large -> ts
+
+let age: number =20;
+age = "skit";
+
+this will give an error as age is predefined as a number.
+
+
