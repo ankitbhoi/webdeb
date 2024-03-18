@@ -2,3 +2,39 @@ React is a js library whose sole purpose is to create UIs.
 
 Library = pre-defined functionalities
 
+library:- one segment of code where bhot sari functionalities are present and which can be invoked and used.
+
+magical line=react is all about components
+
+components:-reusable piece of code -- it is a function in the end
+
+Why need react? when js se sara kaam ho javanga?
+    bcz normal js is based on imperative approach and react is based on declarative approach.
+
+    Imperative Approach:
+        In imperative programming, you explicitly specify how to achieve a task. You provide step-by-step instructions, detailing each action to take.
+        Think of it like giving directions to someone: “First, turn left. Then, walk 100 meters. Next, cross the street.”
+        In the context of web development with Plain JavaScript, you might manipulate the DOM directly, specifying how to create, update, or delete elements. For example:
+
+        // Imperative approach: Creating an element and appending it to the DOM
+            const button = document.createElement('button');
+            button.textContent = 'Click me';
+            document.getElementById('root').appendChild(button);
+
+    Declarative Approach:
+        In declarative programming, you focus on what you want to achieve rather than the specific steps to get there.
+        You describe the desired outcome, and the system (like a library or framework) handles the implementation details.
+        React embodies a declarative approach. When you define a React component, you specify its structure and behavior without worrying about the low-level DOM manipulation:
+    
+        // Declarative approach: Defining a React component
+            function MyButton() {
+                return <button>Click me</button>;
+            }
+
+        In this example, you declare that you want a button, and React takes care of creating and updating the DOM.
+
+
+Generally we follow SPA approach(Single page approach).
+one html file is loaded and other parts of the page are dynamically loaded.
+it feels like there are multiple pages but in actual the above statement is happening under the hood.
+
